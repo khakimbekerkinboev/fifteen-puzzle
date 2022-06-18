@@ -73,8 +73,8 @@ header {
   margin-bottom: 1.5rem;
 }
 .single-cell {
-  width: 6.2rem;
-  height: 6.2rem;
+  width: 6.25rem;
+  height: 6.25rem;
   border-radius: 0.25rem;
   background-color: #1c1c1c;
 }
@@ -92,8 +92,8 @@ header {
 
 @media (max-width: 500px) {
   .single-cell {
-    width: 4rem;
-    height: 4rem;
+    width: 20vw;
+    height: 20vw;
   }
   .buttons {
     display: flex;

@@ -18,22 +18,19 @@ function arrayRandom(length) {
   return arr
 }
 
-let grid
+let order
 function fillCells() {
   //create a random array of elements 0-16
-  grid = arrayRandom(16)
+  order = arrayRandom(16)
 
   //fill the cells
   for (let i = 0; i < 16; i++) {
-    if (grid[i] == 0) {
+    if (order[i] == 0) {
       cells[i].innerHTML = ''
     } else {
-      cells[i].innerHTML = `<div class="single-item">${grid[i]}</div>`
+      cells[i].innerHTML = `<div class="single-item">${order[i]}</div>`
     }
   }
-
-  //click numbers function
-  clickNumbers()
 }
 
 //when the page loads
@@ -48,42 +45,65 @@ restart.addEventListener('click', fillCells)
 
 function clickNumbers() {
   window.addEventListener('click', (e) => {
-    const currentIndex = grid.indexOf(Number(e.target.innerHTML))
+    if (e.target.classList.contains('single-item')) {
+      const currentIndex = order.indexOf(Number(e.target.innerHTML))
 
-    if (grid[currentIndex - 1] == 0 && currentIndex % 4 !== 0) {
-      //change items on the screen
-      cells[currentIndex - 1].innerHTML = cells[currentIndex].innerHTML
-      cells[currentIndex].innerHTML = ''
-      //change items in the grid array
-      grid[currentIndex - 1] = grid[currentIndex]
-      grid[currentIndex] = 0
+      //right
+      if (order[currentIndex - 1] == 0 && currentIndex % 4 !== 0) {
+        //change items on the screen
+        cells[currentIndex - 1].innerHTML = cells[currentIndex].innerHTML
+        cells[currentIndex].innerHTML = ''
+        //change items in the order array
+        order[currentIndex - 1] = order[currentIndex]
+        order[currentIndex] = 0
+      }
+
+      //left
+      if (order[currentIndex + 1] == 0 && (currentIndex + 1) % 4 !== 0) {
+        //change items on the screen
+        cells[currentIndex + 1].innerHTML = cells[currentIndex].innerHTML
+        cells[currentIndex].innerHTML = ''
+        //change items in the order array
+        order[currentIndex + 1] = order[currentIndex]
+        order[currentIndex] = 0
+      }
+
+      //up
+      if (order[currentIndex - 4] == 0) {
+        //change items on the screen
+        cells[currentIndex - 4].innerHTML = cells[currentIndex].innerHTML
+        cells[currentIndex].innerHTML = ''
+        //change items in the order array
+        order[currentIndex - 4] = order[currentIndex]
+        order[currentIndex] = 0
+      }
+
+      //down
+      if (order[currentIndex + 4] == 0) {
+        //change items on the screen
+        cells[currentIndex + 4].innerHTML = cells[currentIndex].innerHTML
+        cells[currentIndex].innerHTML = ''
+        //change items in the order array
+        order[currentIndex + 4] = order[currentIndex]
+        order[currentIndex] = 0
+      }
+      checkCorrectPosition()
     }
+  })
+}
+clickNumbers()
 
-    if (grid[currentIndex + 1] == 0 && (currentIndex + 1) % 4 !== 0) {
-      //change items on the screen
-      cells[currentIndex + 1].innerHTML = cells[currentIndex].innerHTML
-      cells[currentIndex].innerHTML = ''
-      //change items in the grid array
-      grid[currentIndex + 1] = grid[currentIndex]
-      grid[currentIndex] = 0
-    }
+//////////////////////////
+//Add "green" color
+//////////////////////////
 
-    if (grid[currentIndex - 4] == 0) {
-      //change items on the screen
-      cells[currentIndex - 4].innerHTML = cells[currentIndex].innerHTML
-      cells[currentIndex].innerHTML = ''
-      //change items in the grid array
-      grid[currentIndex - 4] = grid[currentIndex]
-      grid[currentIndex] = 0
-    }
-
-    if (grid[currentIndex + 4] == 0) {
-      //change items on the screen
-      cells[currentIndex + 4].innerHTML = cells[currentIndex].innerHTML
-      cells[currentIndex].innerHTML = ''
-      //change items in the grid array
-      grid[currentIndex + 4] = grid[currentIndex]
-      grid[currentIndex] = 0
+function checkCorrectPosition() {
+  const items = document.querySelectorAll('.single-item')
+  items.forEach((e) => {
+    if (Number(e.innerHTML) == order.indexOf(Number(e.innerHTML)) + 1) {
+      e.style.background = 'green'
+    } else {
+      e.style.background = '#505050'
     }
   })
 }

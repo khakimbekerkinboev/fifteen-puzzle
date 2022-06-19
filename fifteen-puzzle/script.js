@@ -1,6 +1,8 @@
 const restart = document.querySelector('.restart')
 const pause = document.querySelector('.pause')
 const cells = document.querySelectorAll('.single-cell')
+const time = document.querySelector('#time')
+const moves = document.querySelector('#moves')
 
 //////////////////////////
 //Randomize the numbers
@@ -31,6 +33,15 @@ function fillCells() {
       cells[i].innerHTML = `<div class="single-item">${order[i]}</div>`
     }
   }
+
+  //change the background color of the item if it's in the correct position
+  checkCorrectPosition()
+
+  //initial number of moves is 0
+  moves.innerHTML = 0
+
+  //stop counting
+  time.classList.remove('counting')
 }
 
 //when the page loads
@@ -87,23 +98,45 @@ function clickNumbers() {
         order[currentIndex + 4] = order[currentIndex]
         order[currentIndex] = 0
       }
+
+      //change the background color of the item if it's in the correct position
       checkCorrectPosition()
+
+      //increase the number of moves by 1 in each click
+      moves.innerHTML++
+
+      //start counting in the first click
+      time.classList.add('counting')
     }
   })
 }
 clickNumbers()
 
 //////////////////////////
-//Add "green" color
+//Change background color
 //////////////////////////
 
 function checkCorrectPosition() {
   const items = document.querySelectorAll('.single-item')
   items.forEach((e) => {
     if (Number(e.innerHTML) == order.indexOf(Number(e.innerHTML)) + 1) {
-      e.style.background = 'green'
+      e.style.background = '#008000'
     } else {
       e.style.background = '#505050'
     }
   })
 }
+
+//////////////////////////
+//Count time
+//////////////////////////
+
+function count() {
+  if (time.classList.contains('counting')) {
+    time.innerHTML++
+  } else {
+    time.innerHTML = 0
+  }
+}
+
+setInterval(count, 1000)

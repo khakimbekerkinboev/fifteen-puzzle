@@ -3,6 +3,8 @@ const pause = document.querySelector('.pause')
 const cells = document.querySelectorAll('.single-cell')
 const time = document.querySelector('#time')
 const moves = document.querySelector('#moves')
+const pauseModal = document.querySelector('.pause-modal')
+const playBtn = document.querySelector('.play-btn')
 
 //////////////////////////
 //Randomize the numbers
@@ -42,6 +44,7 @@ function fillCells() {
 
   //stop counting
   time.classList.remove('counting')
+  time.innerHTML = 0
 }
 
 //when the page loads
@@ -134,9 +137,28 @@ function checkCorrectPosition() {
 function count() {
   if (time.classList.contains('counting')) {
     time.innerHTML++
-  } else {
-    time.innerHTML = 0
   }
 }
 
 setInterval(count, 1000)
+
+//////////////////////////
+//Pause the game
+//////////////////////////
+pause.addEventListener('click', (e) => {
+  if (e.target.innerHTML === 'Pause') {
+    pauseModal.classList.remove('modal-inactive')
+    time.classList.remove('counting')
+    pause.innerHTML = 'Play'
+  } else if (e.target.innerHTML === 'Play') {
+    pauseModal.classList.add('modal-inactive')
+    time.classList.add('counting')
+    pause.innerHTML = 'Pause'
+  }
+})
+
+playBtn.addEventListener('click', () => {
+  pauseModal.classList.add('modal-inactive')
+  time.classList.add('counting')
+  pause.innerHTML = 'Pause'
+})

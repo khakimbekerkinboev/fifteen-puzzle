@@ -86,7 +86,7 @@ header {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 0.35rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -125,6 +125,17 @@ header {
   background-color: #505050;
   border-radius: 0.25rem;
   cursor: pointer;
+}
+
+.instructions {
+  max-width: fit-content;
+}
+.instructions h2 {
+  margin-bottom: 1rem;
+}
+.instructions p {
+  text-align: justify;
+  line-height: 1.5rem;
 }
 
 @media (max-width: 500px) {

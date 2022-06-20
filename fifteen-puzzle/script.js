@@ -196,6 +196,7 @@ lightSwitch.addEventListener('click', () => {
     for (let item of document.querySelectorAll('.single-item')) {
       item.style.backgroundColor = '#D3D3D3'
     }
+    pauseModal.style.backgroundColor = 'rgba(255, 255, 255, 0.7)'
     checkCorrectPosition()
   } else if (lightSwitch.classList.contains('fa-moon')) {
     //change icons
@@ -211,6 +212,7 @@ lightSwitch.addEventListener('click', () => {
     for (let item of document.querySelectorAll('.single-item')) {
       item.style.backgroundColor = '#505050'
     }
+    pauseModal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'
     checkCorrectPosition()
   }
 })

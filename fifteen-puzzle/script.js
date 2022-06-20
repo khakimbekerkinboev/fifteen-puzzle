@@ -50,6 +50,12 @@ function fillCells() {
 
   //disable pause button until the game starts
   checkPauseability()
+
+  //check if the modal window is open, if yes, close it
+  if (!pauseModal.classList.contains('modal-inactive')) {
+    pauseModal.classList.add('modal-inactive')
+    pause.innerHTML = 'Pause'
+  }
 }
 
 //fill the cells when the page loads

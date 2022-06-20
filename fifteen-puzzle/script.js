@@ -252,3 +252,27 @@ function checkPauseability() {
     pause.style.opacity = '1'
   }
 }
+
+/////////////////////////////////////////
+//Change buttons' background when clicked
+/////////////////////////////////////////
+
+function changeButton(button) {
+  button.addEventListener('mousedown', () => {
+    if (lightSwitch.classList.contains('fa-lightbulb')) {
+      button.style.backgroundColor = '#505050'
+    } else if (lightSwitch.classList.contains('fa-moon')) {
+      button.style.backgroundColor = '#D3D3D3'
+    }
+  })
+  button.addEventListener('mouseup', () => {
+    if (lightSwitch.classList.contains('fa-lightbulb')) {
+      button.style.backgroundColor = 'transparent'
+    } else if (lightSwitch.classList.contains('fa-moon')) {
+      button.style.backgroundColor = 'transparent'
+    }
+  })
+}
+
+changeButton(restart)
+changeButton(pause)

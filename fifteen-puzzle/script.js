@@ -47,12 +47,14 @@ function fillCells() {
   //stop counting
   time.classList.remove('counting')
   time.innerHTML = 0
+
+  //disable pause button until the game starts
+  checkPauseability()
 }
 
-//when the page loads
+//fill the cells when the page loads
 fillCells()
-
-//when the restart button is clicked
+//fill the cells when the restart button is clicked
 restart.addEventListener('click', fillCells)
 
 //////////////////////////
@@ -119,16 +121,20 @@ function clickNumbers() {
         //start counting in the first click
         time.classList.add('counting')
       }
+
       //change the background color of the item if it's in the correct position
       checkCorrectPosition()
+
+      //activate pause button after the game starts
+      checkPauseability()
     }
   })
 }
 clickNumbers()
 
-//////////////////////////
-//Change background color
-//////////////////////////
+////////////////////////////////////////////////////
+//Change item color if it's in the correct position
+////////////////////////////////////////////////////
 
 function checkCorrectPosition() {
   const items = document.querySelectorAll('.single-item')
@@ -216,3 +222,17 @@ lightSwitch.addEventListener('click', () => {
     checkCorrectPosition()
   }
 })
+
+//////////////////////////
+//Disable pause button
+//////////////////////////
+
+function checkPauseability() {
+  if (moves.innerHTML == 0) {
+    pause.disabled = true
+    pause.style.cursor = 'not-allowed'
+  } else {
+    pause.removeAttribute('disabled')
+    pause.style.cursor = 'pointer'
+  }
+}

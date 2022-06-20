@@ -59,6 +59,7 @@ header {
   cursor: pointer;
   padding: 0.45rem 0.75rem;
 }
+
 .pause {
   background-color: transparent;
   border: 1px solid #c0c0c0;
@@ -67,6 +68,7 @@ header {
   cursor: pointer;
   padding: 0.45rem 0.75rem;
 }
+
 .indicators {
   display: flex;
   justify-content: space-between;

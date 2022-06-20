@@ -78,7 +78,7 @@ function clickNumbers() {
         cells[currentIndex - 1].innerHTML = cells[currentIndex].innerHTML
         setTimeout(function () {
           cells[currentIndex].innerHTML = ''
-        }, 50)
+        }, 30)
         //change items in the order array
         order[currentIndex - 1] = order[currentIndex]
         order[currentIndex] = 0
@@ -94,7 +94,7 @@ function clickNumbers() {
         cells[currentIndex + 1].innerHTML = cells[currentIndex].innerHTML
         setTimeout(function () {
           cells[currentIndex].innerHTML = ''
-        }, 50)
+        }, 30)
         //change items in the order array
         order[currentIndex + 1] = order[currentIndex]
         order[currentIndex] = 0
@@ -110,7 +110,7 @@ function clickNumbers() {
         cells[currentIndex - 4].innerHTML = cells[currentIndex].innerHTML
         setTimeout(function () {
           cells[currentIndex].innerHTML = ''
-        }, 50)
+        }, 30)
         //change items in the order array
         order[currentIndex - 4] = order[currentIndex]
         order[currentIndex] = 0
@@ -126,7 +126,7 @@ function clickNumbers() {
         cells[currentIndex + 4].innerHTML = cells[currentIndex].innerHTML
         setTimeout(function () {
           cells[currentIndex].innerHTML = ''
-        }, 50)
+        }, 30)
         //change items in the order array
         order[currentIndex + 4] = order[currentIndex]
         order[currentIndex] = 0

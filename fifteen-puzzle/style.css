@@ -58,6 +58,7 @@ header {
   border-radius: 0.35rem;
   cursor: pointer;
   padding: 0.45rem 0.75rem;
+  transition: all 300ms linear;
 }
 
 .pause {
@@ -67,6 +68,7 @@ header {
   border-radius: 0.35rem;
   cursor: pointer;
   padding: 0.45rem 0.75rem;
+  transition: all 300ms linear;
 }
 
 .indicators {

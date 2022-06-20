@@ -76,7 +76,9 @@ function clickNumbers() {
       if (order[currentIndex - 1] == 0 && currentIndex % 4 !== 0) {
         //change items on the screen
         cells[currentIndex - 1].innerHTML = cells[currentIndex].innerHTML
-        cells[currentIndex].innerHTML = ''
+        setTimeout(function () {
+          cells[currentIndex].innerHTML = ''
+        }, 50)
         //change items in the order array
         order[currentIndex - 1] = order[currentIndex]
         order[currentIndex] = 0
@@ -90,7 +92,9 @@ function clickNumbers() {
       if (order[currentIndex + 1] == 0 && (currentIndex + 1) % 4 !== 0) {
         //change items on the screen
         cells[currentIndex + 1].innerHTML = cells[currentIndex].innerHTML
-        cells[currentIndex].innerHTML = ''
+        setTimeout(function () {
+          cells[currentIndex].innerHTML = ''
+        }, 50)
         //change items in the order array
         order[currentIndex + 1] = order[currentIndex]
         order[currentIndex] = 0
@@ -104,7 +108,9 @@ function clickNumbers() {
       if (order[currentIndex - 4] == 0) {
         //change items on the screen
         cells[currentIndex - 4].innerHTML = cells[currentIndex].innerHTML
-        cells[currentIndex].innerHTML = ''
+        setTimeout(function () {
+          cells[currentIndex].innerHTML = ''
+        }, 50)
         //change items in the order array
         order[currentIndex - 4] = order[currentIndex]
         order[currentIndex] = 0
@@ -118,7 +124,9 @@ function clickNumbers() {
       if (order[currentIndex + 4] == 0) {
         //change items on the screen
         cells[currentIndex + 4].innerHTML = cells[currentIndex].innerHTML
-        cells[currentIndex].innerHTML = ''
+        setTimeout(function () {
+          cells[currentIndex].innerHTML = ''
+        }, 50)
         //change items in the order array
         order[currentIndex + 4] = order[currentIndex]
         order[currentIndex] = 0
@@ -237,8 +245,10 @@ function checkPauseability() {
   if (moves.innerHTML == 0) {
     pause.disabled = true
     pause.style.cursor = 'not-allowed'
+    pause.style.opacity = '0.5'
   } else {
     pause.removeAttribute('disabled')
     pause.style.cursor = 'pointer'
+    pause.style.opacity = '1'
   }
 }
